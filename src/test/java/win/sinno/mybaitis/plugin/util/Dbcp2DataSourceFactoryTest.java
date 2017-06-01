@@ -27,7 +27,7 @@ public class Dbcp2DataSourceFactoryTest {
         prop.put("testWhileIdle", true);
         prop.put("timeBetweenEvictionRunsMillis",
                 30000);
-        prop.put("numTestsPerEvictionRun", 10);
+        prop.put("numTestsPerEvictionRun", 5);
         prop.put("minEvictableIdleTimeMillis", 100000);
         prop.put("softMinEvictableIdleTimeMillis",
                 -1);

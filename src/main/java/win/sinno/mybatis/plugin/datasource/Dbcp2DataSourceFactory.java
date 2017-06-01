@@ -31,6 +31,11 @@ public class Dbcp2DataSourceFactory implements DataSourceFactory {
         return dataSource;
     }
 
+    @Override
+    public void setProperties(Properties ps) {
+        setField(dataSource.getClass(), ps);
+    }
+
     private void setField(Class<?> clazz, Properties properties) {
 
         Enumeration<Object> keys = properties.keys();
@@ -121,58 +126,6 @@ public class Dbcp2DataSourceFactory implements DataSourceFactory {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-    }
-
-
-    @Override
-    public void setProperties(Properties ps) {
-        setField(dataSource.getClass(), ps);
-
-//        dataSource.setDriverClassName(ps.getProperty("driverClassName"));
-//        dataSource.setUrl(ps.getProperty("url"));
-//        dataSource.setUsername(ps.getProperty("username"));
-//        dataSource.setPassword(ps.getProperty("password"));
-//
-//        // -- pool conf --
-//        // initialSize
-//        String initialSizeStr = ps.getProperty("initialSize");
-//        if (initialSizeStr != null && initialSizeStr.trim().length() > 0) {
-//            try {
-//                Integer initialSize = Integer.parseInt(ps.getProperty("initialSize"));
-//                if (initialSize >= 0) {
-//                    dataSource.setInitialSize(initialSize);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        // maxTotal
-//        String maxTotalStr = ps.getProperty("maxTotal");
-//        if (maxTotalStr != null && maxTotalStr.trim().length() > 0) {
-//            try {
-//                Integer maxTotal = Integer.parseInt(ps.getProperty("maxTotal"));
-//                if (maxTotal > 0) {
-//                    dataSource.setMaxTotal(maxTotal);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        dataSource.setMaxTotal(Integer.parseInt(ps.getProperty("maxTotal", "20")));
-//        dataSource.setMaxIdle(Integer.parseInt(ps.getProperty("maxIdle", "8")));
-//        dataSource.setMinIdle(Integer.parseInt(ps.getProperty("minIdle", "0")));
-//        dataSource.setMaxWaitMillis(Long.parseLong(ps.getProperty("maxWaitMillis", "60000")));
-//        dataSource.setTestWhileIdle("true".equals(ps.getProperty("testWhileIdle", "false")));
-//        dataSource.setTimeBetweenEvictionRunsMillis(Long.parseLong(ps.getProperty("timeBetweenEvictionRunsMillis", "-1")));
-//        dataSource.setNumTestsPerEvictionRun(Integer.parseInt(ps.getProperty("numTestsPerEvictionRun", "3")));
-//        dataSource.setMinEvictableIdleTimeMillis(Long.parseLong(ps.getProperty("minEvictableIdleTimeMillis", "-1")));
-//        dataSource.setSoftMinEvictableIdleTimeMillis(Long.parseLong(ps.getProperty("softMinEvictableIdleTimeMillis", "-1")));
-//
-//        dataSource.setRemoveAbandonedOnBorrow("true".equals(ps.getProperty("removeAbandonedOnBorrow", "false")));
-//        dataSource.setRemoveAbandonedTimeout(Integer.parseInt(ps.getProperty("removeAbandonedTimeout", "300")));
-//        dataSource.setLogAbandoned("true".equals(ps.getProperty("logAbandoned", "false")));
     }
 
 
