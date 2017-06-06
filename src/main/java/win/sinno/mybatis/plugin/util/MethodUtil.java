@@ -5,10 +5,10 @@ package win.sinno.mybatis.plugin.util;
  * @version : 1.0
  * @since : 2017-06-01 10:47.
  */
-public final class SetterUtil {
+public final class MethodUtil {
 
     public static final String getSetterName(String fieldName) {
-        if (StringUtil.isBlack(fieldName)) {
+        if (StringUtil.isBlank(fieldName)) {
             return null;
         }
 

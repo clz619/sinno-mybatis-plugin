@@ -2,7 +2,8 @@ package win.sinno.mybatis.plugin.datasource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.datasource.DataSourceFactory;
-import win.sinno.mybatis.plugin.util.SetterUtil;
+import org.apache.ibatis.type.Alias;
+import win.sinno.mybatis.plugin.util.MethodUtil;
 import win.sinno.mybatis.plugin.util.StringUtil;
 
 import javax.sql.DataSource;
@@ -18,6 +19,7 @@ import java.util.Properties;
  * @version : 1.0
  * @since : 2017-05-31 09:50.
  */
+@Alias("DBCP2")
 public class Dbcp2DataSourceFactory implements DataSourceFactory {
 
     private BasicDataSource dataSource;
@@ -55,7 +57,7 @@ public class Dbcp2DataSourceFactory implements DataSourceFactory {
                 if (valObj != null) {
                     val = String.valueOf(valObj);
 
-                    if (StringUtil.isNotBlack(val)) {
+                    if (StringUtil.isNotBlank(val)) {
                         setFiled(clazz, key, val);
                     }
                 }
@@ -66,7 +68,7 @@ public class Dbcp2DataSourceFactory implements DataSourceFactory {
 
     private void setFiled(Class<?> clazz, String name, String val) {
         Method[] methods = clazz.getDeclaredMethods();
-        String targetMethodName = SetterUtil.getSetterName(name);
+        String targetMethodName = MethodUtil.getSetterName(name);
 
         for (Method method : methods) {
             String methodName = method.getName();

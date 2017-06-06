@@ -7,11 +7,11 @@ package win.sinno.mybatis.plugin.util;
  */
 public final class StringUtil {
 
-    public static boolean isBlack(String str) {
+    public static boolean isBlank(String str) {
         return str == null || str.trim().length() == 0;
     }
 
-    public static boolean isNotBlack(String str) {
+    public static boolean isNotBlank(String str) {
         return str != null && str.trim().length() > 0;
     }
 }
